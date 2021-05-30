@@ -1,19 +1,17 @@
-// const iab = require('../../modules/button.js')
-/* const { Client, Intents } = require('discord.js')
-const bot = new Client({ intents: Intents.ALL }) */
-
 module.exports = {
   name: 'approve',
-  description: '新規ユーザーを承認します。(モデレーターのみ)',
   modOnly: true,
   async execute (message) {
-    /* if (!message.mentions.users.size) {
-      return message.reply('承認するユーザーを指定してください。')
-    } */
+    if (!message.mentions.users.size) return message.reply('承認するユーザーを指定してください。')
 
-    // const taggedUser = message.mentions.users.first()
+    const User = message.mentions.users.first()
+    const taggedUser = await message.guild.members.fetch(User.id)
 
-    // message.channel.send(`You wanted to kick: ${taggedUser.username}`)
+    if (taggedUser.roles.cache.has('848586257365336115')) return message.reply('このユーザーは承認済みです。')
 
+    taggedUser.roles.remove('848586319084519434')
+    taggedUser.roles.add('848586257365336115')
+
+    message.reply(`**${taggedUser.user.tag}** さんを承認しました。`)
   }
 }

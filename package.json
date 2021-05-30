@@ -3,6 +3,9 @@
     "standard": "^16.0.3"
   },
   "dependencies": {
-    "discord.js": "discordjs/discord.js"
+    "discord-buttons": "^2.4.1",
+    "discord.js": "discordjs/discord.js",
+    "request": "^2.88.2",
+    "serp": "^2.1.0"
   }
 }
